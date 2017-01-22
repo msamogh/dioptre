@@ -1,0 +1,25 @@
+{
+  "manifest_version": 2,
+
+  "name": "FlockZen",
+  "description": "Lets you focus",
+  "version": "1.0",
+  "background": {
+    "scripts": ["timer.js", "jquery-3.1.1.min.js"],
+    "persistent": true
+  },
+  "browser_action": {
+    "default_icon": "icon.png"
+  },
+  "permissions": [
+    "activeTab",
+    "background",
+    "webRequest",
+    "webRequestBlocking",
+    "contextMenus",
+    "*://*.facebook.com/*",
+    "*://*.twitter.com/*",
+    "*://*.reddit.com/*",
+    "*://zenflock.herokuapp.com/"
+  ]
+}
