@@ -1,0 +1,9 @@
+{
+    "channels": [
+        {
+            "id": "drinkWater",
+            "name": "Drink Water",
+            "desc": "Reminds you to sip water every 30 minutes"
+        }
+    ]
+}

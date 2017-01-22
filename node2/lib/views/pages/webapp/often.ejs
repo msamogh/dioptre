@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>New routine</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <style type="text/css">
+
+
+    @font-face {
+      font-family: Avenir;
+      src: url('font/Avenir-Black.ttf');
+    }
+    .sub-container {
+      background: #0ABE51;
+      padding: 20px;
+      border-radius: 16px;
+    }
+    h3 {
+      font-family: 'Open Sans', sans-serif;
+      font-weight: bold;
+      color: #fff;
+    }
+    h2.title {
+      font-family: Avenir, Helvetica, Arial, sans-serif;
+      font-size: 45px;
+      color: #333;
+      font-weight: bold;
+      line-height: 51px;
+    }
+    .green {
+      background: #0ABE51;
+    }
+    .growing-text-area {
+      box-sizing: inherit;
+      outline: 0;
+    }
+
+    .container {
+      max-width: 480px;
+      text-align: center;
+    }
+
+    textarea {
+      color: white;
+      border: 0.25em solid #eee;
+      -webkit-appearance: none;
+      font-weight: 700;
+      font-size: 17px;
+      padding: 6px;
+      border-radius: 0.5em;
+      width: 80%;
+      word-wrap: break-word;
+      font-family: "Avenir", "Open Sans" , arial, sans-serif;
+      border-color: rgba(255,255,255,0.2);
+      background: none;
+    }
+
+    select {
+      color: white;
+      width: 80%;
+      border-radius: 0.5em;
+      border: 0.25em solid #eee;
+      text-transform: uppercase;
+      background-color: transparent;
+      padding: 10px;
+      font-size: 17px;
+      font-family: "Open Sans", sans-serif;
+      font-weight: bold;
+      border-color: rgba(255,255,255,0.2);
+      box-sizing: border-box;
+      background-image: url(/assets/layout/chevron-down-white-e4696672410cd419dd8e30063be2f1046cb35a00077fd72591395543c8a75c95.svg);
+    }
+
+    button.save {
+      color: #333;
+      background-color: white;
+      box-sizing: border-box;
+      padding: 10px;
+      width: 40%;
+      cursor: pointer;
+      font-family: 'Open Sans', sans-serif;
+      font-weight: bolder;
+      font-size: 23px;
+      border: 3px solid transparent;
+      border-radius: 2.5em;
+    }
+
+  </style>
+
+  <script>
+    $(document).ready(function() {
+      $('.save').click(function(e) {
+        var name = $('#name').val();
+        var freq = $('#freq').val();
+        var desc = $('#desc').val();
+        var msg = $('#msg').val();
+        var url = '/channels/create?name=' + name + '&freq=' + freq + '&userId=<%=userId%>&desc=' + desc + '&msg=' + msg;
+        $.get(url);        
+        window.location = '/channels?userId=<%=userId%>';
+      });
+    });
+  </script>
+
+</head>
+<body class="text-center">
+
+<div class="container text-center">
+  <h2 class='title'>New routine</h2>
+
+  <div class="sub-container">
+
+
+  <div class="growing-text-area">
+    <textarea id="name"> Drink water </textarea>
+  </div>
+
+  <h3>Description</h3>
+   <div class="growing-text-area">
+    <textarea id="desc"> Reminds you to sip some water every 30 minutes </textarea>
+  </div>
+
+  <h3>Reminder text</h3>
+   <div class="growing-text-area">
+    <textarea id="msg"> Drink water! </textarea>
+  </div>
+  
+  <h3>Alert me </h3>
+
+  <div class="growing-text-area">
+    <textarea id="freq"> at / every</textarea>
+  </div>
+
+  <br />
+  
+  <button class='save'>
+    Save
+  </button>
+
+
+</div>
+
+</body>
+</html>

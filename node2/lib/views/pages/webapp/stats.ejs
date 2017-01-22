@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <body>
+      <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+      <style>
+        h2 {
+            font-family: 'Open Sans', sans-serif;
+        }
+        #chart_div {
+            text-align: center;
+        }
+      </style>
+      <script type="text/javascript">
+      var userId = "<%=userId%>";
+      console.log(userId);
+        google.charts.load('current', {packages: ['corechart', 'bar']});
+        google.charts.setOnLoadCallback(drawColColors);
+
+function drawColColors() {
+      var data = new google.visualization.DataTable();
+      data.addColumn('date', 'Day');
+      data.addColumn('number', 'Sessions');
+      var rows = [];
+      <% for (var i = 0; i < dayWise.length; i++) { var s = dayWise[i]; console.log(s); %>
+        rows.push([
+            new Date(<%= s.day.getTime() %>),
+            <%= s.tasks.length %>
+        ]);
+      <% } %>
+      rows.reverse();
+      console.log(rows);
+      data.addRows(
+       rows
+      );
+
+      var options = {
+       hAxis: {
+           title: 'Number of Pomodoro sessions'
+       },
+       vAxis: {
+           title: 'Day',
+           direction: -1
+       },
+       'chartArea': {'width': '70%', 'height': '80%'},
+      };
+
+      var chart = new google.visualization.BarChart(document.getElementById('chart_div'));
+      chart.draw(data, options);
+    }
+      </script>
+      <h2>Zen sessions</h2>
+      <div id="chart_div"></div>
+
+    </body>
+</html>
